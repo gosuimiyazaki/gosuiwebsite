@@ -2,6 +2,7 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
+    <!-- スマホで適切な縮尺で表示させるための必須タグ -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>午睡の音源を聴こう</title>
 
@@ -10,18 +11,19 @@
             background-image: url('hosi.png');
             background-size: 70%;
             margin: 0;
-            padding: 0;
+            padding: 10px;
         }
 
         .header-box {
             background-color: #74B5EA;
             color: #ffffff;
             padding: 20px;
+            border-radius: 8px;
         }
 
         .content {
-            width: 90%;
-            max-width: 500px;
+            width: 100%;
+            max-width: 600px; /* プレイヤーが小さくなりすぎないよう幅を拡張 */
             margin: 0 auto;
             box-sizing: border-box;
         }
@@ -32,9 +34,9 @@
             display: block;
         }
 
+        /* オーディオプレイヤーの幅を100%にして表示崩れを防ぐ */
         .content audio {
             width: 100%;
-            min-width: 280px;
             display: block;
             margin: 10px 0;
         }
