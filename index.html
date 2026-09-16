@@ -2,12 +2,15 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>午睡の音源を聴こう</title>
 
     <style>
         body {
             background-image: url('hosi.png');
             background-size: 70%;
+            margin: 0;
+            padding: 0;
         }
 
         .header-box {
@@ -17,8 +20,10 @@
         }
 
         .content {
-            width: 100%;
-            max-width: 350px;
+            width: 90%;
+            max-width: 500px;
+            margin: 0 auto;
+            box-sizing: border-box;
         }
 
         .content img {
@@ -29,7 +34,9 @@
 
         .content audio {
             width: 100%;
+            min-width: 280px;
             display: block;
+            margin: 10px 0;
         }
     </style>
 </head>
@@ -52,21 +59,18 @@
         <img src="syugo.jpg" alt="みんなの写真">
         <br><br>
 
-<p>町</p>
-<audio controls src="machinouta.mp3"></audio>
+        <p>町</p>
+        <audio controls src="machinouta.mp3"></audio>
 
-<p>ずる休み</p>
-<audio controls src="zuruyasumi.mp3"></audio>
+        <p>ずる休み</p>
+        <audio controls src="zuruyasumi.mp3"></audio>
 
-<p>○○</p>
-<audio controls src="marumaru.mp3"></audio>
+        <p>○○</p>
+        <audio controls src="marumaru.mp3"></audio>
 
-<p>東京の歌</p>
-<audio controls src="tokyonouta.mp3"></audio>
+        <p>東京の歌</p>
+        <audio controls src="tokyonouta.mp3"></audio>
 
-<br><br>
-
-<br><br>
         <br><br>
 
         <!-- 町の写真 -->
