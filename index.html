@@ -4,65 +4,83 @@
     <meta charset="UTF-8">
     <title>午睡の音源を聴こう</title>
 
-<!-- ↓ ここから CSS です ↓ -->
+    <style>
+        body {
+            background-image: url('hosi.png');
+            background-size: 70%;
+        }
 
-  <style>
-body {
-      background-image: url('hosi.png'); background-size: 70%;
-/* 画像のファイル名 */
-    
-    }
-  .header-box {
-    background-color: #74B5EA; /* 背景の青色 */
-    color: #ffffff; /* 文字色を白に */
-    padding: 20px; /* 内側に少し余白を作る（お好みで調整可） */
-  }
-</style>
+        .header-box {
+            background-color: #74B5EA;
+            color: #ffffff;
+            padding: 20px;
+        }
 
-<!-- ↑ ここまで ↑ -->
+        .content {
+            width: 100%;
+            max-width: 350px;
+        }
 
+        .content img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .content audio {
+            width: 100%;
+            display: block;
+        }
+    </style>
 </head>
-  
+
 <body>
 
-   <div class="header-box">
-  <h1>午睡の音源を聴けるサイト</h1>
-  <p>宮崎で午睡というバンドをやっています。サイトを訪れてくれてありがとう <br><br>
-     Gt. Vo. みのわ / Gt. たける / Ba. あこ / Dr.なずな</p>
-</div>
-  
-    <!-- ここに画像を挿入します -->
-    <img src="syugo.jpg" style="width: 50%;height: auto;
-alt="みんなの写真"> <br><br>
+    <div class="header-box">
+        <h1>午睡の音源を聴けるサイト</h1>
 
-<p>町</p>
-<audio controls src="machinouta.mp3" style="width: 100%; max-width: 350px; display: block;"></audio>
+        <p>
+            宮崎で午睡というバンドをやっています。サイトを訪れてくれてありがとう
+            <br><br>
+            Gt. Vo. みのわ / Gt. たける / Ba. あこ / Dr.なずな
+        </p>
+    </div>
 
-<p>ずる休み</p>
-<audio controls src="zuruyasumi.mp3" style="width: 100%; max-width: 350px; display: block;"></audio>
+    <div class="content">
 
-<p>○○</p>
-<audio controls src="marumaru.mp3" style="width: 100%; max-width: 350px; display: block;"></audio>
+        <!-- みんなの写真 -->
+        <img src="syugo.jpg" alt="みんなの写真">
+        <br><br>
 
-<p>東京の歌</p>
-<audio controls src="tokyonouta.mp3" style="width: 100%; max-width: 350px; display: block;"></audio>
+        <p>町</p>
+        <audio controls src="machinouta.mp3"></audio>
 
-<br><br>
+        <p>ずる休み</p>
+        <audio controls src="zuruyasumi.mp3"></audio>
 
+        <p>○○</p>
+        <audio controls src="marumaru.mp3"></audio>
 
- 
-    <!-- ここに画像を挿入します -->
-    <img src="machi.png" style="width: 50%;height: auto;
-alt="町写真"> <br><br>
+        <p>東京の歌</p>
+        <audio controls src="tokyonouta.mp3"></audio>
 
-<p>おまけの絵　<br><br>
- <!-- ここに画像を挿入します -->
-    <img src="mini.png" style="width: 40%;height: auto;
-alt="ミニアルバム"> <br><br>
+        <br><br>
 
- <!-- ここに画像を挿入します -->
-    <img src="ikanoe.png" style="width: 40%;height: auto;
-alt="イカ捌き"> <br><br>
+        <!-- 町の写真 -->
+        <img src="machi.png" alt="町写真">
+        <br><br>
+
+        <p>おまけの絵</p>
+
+        <!-- ミニアルバム -->
+        <img src="mini.png" alt="ミニアルバム">
+        <br><br>
+
+        <!-- イカ捌き -->
+        <img src="ikanoe.png" alt="イカ捌き">
+        <br><br>
+
+    </div>
 
 </body>
 </html>
