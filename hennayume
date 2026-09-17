@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <!-- スマホで適切な縮尺で表示させるための必須タグ -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>変な夢</title>
+
+    <style>
+        body {
+            background-image: url('hosi.png');
+            background-size: 70%;
+            margin: 0;
+            padding: 10px;
+        }
+
+        .header-box {
+            background-color: #74B5EA;
+            color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .content {
+            width: 100%;
+            max-width: 600px; /* プレイヤーが小さくなりすぎないよう幅を拡張 */
+            margin: 0 auto;
+            box-sizing: border-box;
+        }
+
+        .content img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        
+        }
+
+        .menu-btn {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 30px;
+      height: 22px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      z-index: 100;
+    }
+    .menu-btn span {
+      width: 100%;
+      height: 3px;
+      background-color: #333;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+    .menu-btn.active span:nth-child(1) {
+      transform: translateY(9.5px) rotate(45deg);
+      background-color: #333;  
+    }
+    .menu-btn.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .menu-btn.active span:nth-child(3) {
+      transform: translateY(-9.5px) rotate(-45deg);
+       background-color: #333;  
+    }
+    .nav-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 200px;
+      height: 100vh;
+      background-color: #ffffff;
+      padding-top: 60px;
+      transition: right 0.3s ease;
+      z-index: 99;
+    }
+    .nav-menu.active {
+      right: 0;
+    }
+    .nav-menu ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .nav-menu li a {
+      display: block;
+      padding: 15px 20px;
+      color: #333333;
+      text-decoration: none;
+    }
+    </style>
+</head>
+
+<body>
+
+
+  
+        <button class="menu-btn" id="menuBtn">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+
+     <nav class="nav-menu" id="navMenu">
+    <ul>
+        <li><a href="https://abehiroshi.la.coocan.jp/" target="_blank" rel="noopener noreferrer">変な夢</a></li>
+    </ul>
+</nav>
+  
+       
+
+
+    
+
+   
+    
+    <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const navMenu = document.getElementById('navMenu');
+
+    menuBtn.addEventListener('click', () => {
+      menuBtn.classList.toggle('active');
+      navMenu.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>
