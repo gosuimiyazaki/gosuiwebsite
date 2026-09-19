@@ -45,12 +45,13 @@
             margin: 10px 0;
         }
 
-        /* ライブ情報カード */
+       /* ライブ情報カード */
         .live-card {
             background-color: rgba(255, 255, 255, 0.9);
             border-radius: 8px;
             padding: 15px;
-            margin-bottom: 20px;
+            max-width: 320px; /* ← カード全体の最大幅を320pxに制限 */
+            margin: 0 auto 20px auto; /* ← 画面中央に配置 */
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             word-break: break-all;
         }
