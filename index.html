@@ -2,6 +2,7 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
+    <!-- スマホで適切な縮尺で表示させるための必須タグ -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>午睡の音源を聴こう</title>
 
@@ -11,7 +12,6 @@
             background-size: 70%;
             margin: 0;
             padding: 10px;
-            font-family: sans-serif;
         }
 
         .header-box {
@@ -24,7 +24,7 @@
 
         .content {
             width: 100%;
-            max-width: 600px;
+            max-width: 600px; /* プレイヤーが小さくなりすぎないよう幅を拡張 */
             margin: 0 auto;
             box-sizing: border-box;
         }
@@ -35,48 +35,33 @@
             display: block;
         }
 
+        /* オーディオプレイヤーの幅を100%にして表示崩れを防ぐ */
         .content audio {
             width: 100%;
             display: block;
             margin: 10px 0;
         }
 
-        /* --- ライブ情報用カードのスタイル --- */
+        /* ライブ情報カードのスマホ最適化スタイル */
         .live-card {
-            background-color: #ffffff;
-            border-radius: 0px;
-            overflow: hidden;
-            margin-bottom: 25px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-
-        .live-card img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .live-info {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
             padding: 15px;
-        }
-
-        .live-date {
-            font-size: 1.2rem;
-            color: #74B5EA;
-            font-weight: bold;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            word-break: break-all;
         }
 
         .live-title {
-            font-size: 1.0rem;
+            font-size: 1.2rem;
             font-weight: bold;
-            margin: 5px 0 10px 0;
-            color: #333;
+            margin-bottom: 8px;
         }
 
-        .live-detail {
-            font-size: 0.9rem;
-            color: #555;
-            margin-bottom: 6px;
+        .live-date, .live-detail {
+            font-size: 0.95rem;
+            color: #333;
+            margin-bottom: 4px;
         }
 
         .ticket-btn {
@@ -89,6 +74,13 @@
             border-radius: 20px;
             font-weight: bold;
             font-size: 0.9rem;
+        }
+
+        .live-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin-top: 10px;
         }
 
         /* Instagram埋め込み枠のコンパクト化設定 */
@@ -129,9 +121,17 @@
             transition: all 0.3s ease;
         }
 
-        .menu-btn.active span:nth-child(1) { transform: translateY(9.5px) rotate(45deg); }
-        .menu-btn.active span:nth-child(2) { opacity: 0; }
-        .menu-btn.active span:nth-child(3) { transform: translateY(-9.5px) rotate(-45deg); }
+        .menu-btn.active span:nth-child(1) {
+            transform: translateY(9.5px) rotate(45deg);
+        }
+
+        .menu-btn.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-btn.active span:nth-child(3) {
+            transform: translateY(-9.5px) rotate(-45deg);
+        }
 
         .nav-menu {
             position: fixed;
@@ -145,11 +145,25 @@
             z-index: 999;
         }
 
-        .nav-menu.active { right: 0; }
-        .nav-menu ul { list-style: none; padding: 0; margin: 0; }
-        .nav-menu li a { display: block; padding: 15px 20px; color: #333; text-decoration: none; }
+        .nav-menu.active {
+            right: 0;
+        }
+
+        .nav-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-menu li a {
+            display: block;
+            padding: 15px 20px;
+            color: #333;
+            text-decoration: none;
+        }
     </style>
 </head>
+
 <body>
 
     <button class="menu-btn" id="menuBtn">
@@ -173,20 +187,21 @@
         </p>
     </div>
 
-   
+    <div class="content">
 
-        <!-- アーティスト写真 -->
+        <!-- みんなの写真 -->
         <img src="minna.jpg" alt="みんなの写真">
         <br><br>
 
         <p>SNSやっています<br>@gosui_band</p>
         <div style="margin-top: 15px;">
-            <a href="https://instagram.com/gosui_band" target="_blank" style="display: inline-block; padding: 8px 16px; background-color:white; color: black; text-decoration: none; border-radius: 20px; font-weight: bold; margin-right: 10px; border: 1px solid #ccc;">Instagram</a>
+            <a href="https://instagram.com/gosui_band" target="_blank" style="display: inline-block; padding: 8px 16px; background-color:white; color: black; text-decoration: none; border-radius: 20px; font-weight: bold; margin-right: 10px;">Instagram</a>
             <a href="https://twitter.com/gosui_band" target="_blank" style="display: inline-block; padding: 8px 16px; background-color: #0072FF; color: white; text-decoration: none; border-radius: 20px; font-weight: bold;">Twitter</a>
         </div>
 
         <br><br>
 
+        
         <p>町</p>
         <audio controls src="machinouta.mp3"></audio>
 
@@ -200,83 +215,49 @@
         <audio controls src="tokyonouta.mp3"></audio>
 
         <br><br>
-    
-     <div class="content">
 
-        <!-- ライブ情報一覧がここに自動挿入されます -->
-        <h2>ライブの予定　（チケットお問い合わせはinstagramまで）</h2></h2>
+        <!-- 町の写真 -->
+        <img src="machi.png" alt="町写真">
+        <br><br>
+
+     <!-- ライブ情報枠 -->
         <div id="live-list">読み込み中...</div>
 
         <br><br>
 
-        <img src="machi.png" alt="町写真">
-        <br><br>
 
         <p>おまけの絵</p>
+
+        <!-- ミニアルバム -->
         <img src="mini.png" alt="ミニアルバム">
         <br><br>
+
+        <!-- イカ捌き -->
         <img src="ikanoe.png" alt="イカ捌き">
         <br><br>
+
     </div>
 
     <script>
-        // ハンバーガーメニュー
+        // ハンバーガーメニューの開閉処理
         const menuBtn = document.getElementById('menuBtn');
         const navMenu = document.getElementById('navMenu');
+
         menuBtn.addEventListener('click', () => {
             menuBtn.classList.toggle('active');
             navMenu.classList.toggle('active');
         });
 
-        // --- スプレッドシートからライブ情報を取得する処理 ---
-        const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT96atfvOdnuGXFJcWY5quqfuoo_0DMqOi6rfP_YuKE3l_ogg9VUbfzDi7drIbG-FgtiUMpauMZZrCL/pub?output=csv';
+        // スプレッドシートからのライブ情報読み込み処理
+        const SPREADSHEET_URL = 'https://script.google.com/macros/s/AKfycbz_XXXXXXXXXXXX/exec'; // ご自身のGASエンドポイントURLを指定
 
-        function parseCSV(text) {
-            const lines = text.trim().split(/\r?\n/);
-            return lines.map(line => {
-                const row = [];
-                let insideQuote = false;
-                let entry = '';
-                for (let char of line) {
-                    if (char === '"') {
-                        insideQuote = !insideQuote;
-                    } else if (char === ',' && !insideQuote) {
-                        row.push(entry.trim().replace(/^"(.*)"$/, '$1'));
-                        entry = '';
-                    } else {
-                        entry += char;
-                    }
-                }
-                row.push(entry.trim().replace(/^"(.*)"$/, '$1'));
-                return row;
-            });
-        }
+        fetch(SPREADSHEET_URL)
+            .then(response => response.json())
+            .then(data => {
+                const container = document.getElementById('live-list');
+                const items = data.slice(1); // ヘッダー行を除外
 
-        // Instagramスクリプトを動的にロードする関数
-        function loadInstagramScript() {
-            if (!document.getElementById('insta-embed-script')) {
-                const script = document.createElement('script');
-                script.id = 'insta-embed-script';
-                script.src = 'https://www.instagram.com/embed.js';
-                script.async = true;
-                document.body.appendChild(script);
-            } else if (window.instgrm && window.instgrm.Embeds) {
-                window.instgrm.Embeds.process();
-            }
-        }
-
-        async function fetchLiveSchedule() {
-            const container = document.getElementById('live-list');
-
-            try {
-                const response = await fetch(csvUrl);
-                if (!response.ok) throw new Error('ネットワーク応答エラー');
-                
-                const data = await response.text();
-                const rows = parseCSV(data);
-                const items = rows.slice(1); // ヘッダー除外
-
-                if (items.length === 0 || !items[0][0]) {
+                if (items.length === 0) {
                     container.innerHTML = '<p>現在予定されているライブはありません。</p>';
                     return;
                 }
@@ -284,24 +265,14 @@
                 let html = '';
                 items.forEach(row => {
                     const [date, title, place, time, image, ticket] = row;
-
                     if (!date && !title) return;
 
                     let mediaHtml = '';
                     if (image) {
-                        if (image.includes('instagram.com/p/') || image.includes('instagram.com/reel/')) {
-                            // 個別投稿URLの場合
-                            mediaHtml = `
-                                <div class="insta-container">
-                                    <blockquote class="instagram-media" data-instgrm-permalink="${image}" data-instgrm-version="14" style="width:100%; margin:0; padding:0;"></blockquote>
-                                </div>
-                            `;
-                        } else if (image.includes('instagram.com')) {
-                            // 個別投稿以外のInstagramリンクの場合
-                            mediaHtml = `<div style="margin-top:10px;"><a href="${image}" target="_blank" class="ticket-btn" style="background-color:#E1306C;">Instagram投稿を見る</a></div>`;
+                        if (image.includes('instagram.com')) {
+                            mediaHtml = `<div class="insta-container"><iframe src="${image}embed" width="100%" height="480" frameborder="0" scrolling="no" allowtransparency="true"></iframe></div>`;
                         } else {
-                            // 通常画像の場合
-                            mediaHtml = `<img src="${image}" alt="${title || ''}" style="margin-top:10px; border-radius:8px;">`;
+                            mediaHtml = `<img src="${image}" alt="${title}">`;
                         }
                     }
 
@@ -320,17 +291,11 @@
                 });
 
                 container.innerHTML = html;
-
-                // スクリプトを呼び出して埋め込みを完了させる
-                loadInstagramScript();
-
-            } catch (error) {
-                console.error('読み込みエラー:', error);
-                container.innerHTML = '<p>ライブ情報の読み込みに失敗しました。</p>';
-            }
-        }
-
-        fetchLiveSchedule();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('live-list').innerHTML = '<p>ライブ情報の読み込みに失敗しました。</p>';
+            });
     </script>
 </body>
 </html>
