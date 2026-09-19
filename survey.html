@@ -252,7 +252,7 @@
     </div>
 
     <p class="question-text">もし百万円あげるよって言われたら？</p>
-    <p class="sub-text">（あやしくないよ！午睡一同より）</p>
+    <p class="sub-text">(あやしくない)</p>
 
     <!-- 受け取る / 受け取らない ボタン -->
     <div class="btn-container">
@@ -297,22 +297,27 @@
 
     // 「受け取る」をクリックしたときの処理
     yesBtn.addEventListener('click', () => {
-      popupMessage.textContent = 'おめでとう。百万ポイントゲット！';
-      
-      // イラストを表示（表示したい画像ファイル名に置き換えてください）
+      // \n で改行させるために whiteSpace を設定
+      popupMessage.style.whiteSpace = 'pre-line';
+      popupMessage.textContent = 'おめでとう！\n百万ポイントゲット！';
+
+      // イラストを表示
       popupImg.src = 'hyakuman.png';
       popupImg.style.display = 'block';
 
+      // モーダルを表示
       modalOverlay.classList.add('show');
     });
 
     // 「受け取らない」をクリックしたときの処理
     noBtn.addEventListener('click', () => {
+      popupMessage.style.whiteSpace = 'normal';
       popupMessage.textContent = 'すごい！了解！';
       
       // 画像は非表示
       popupImg.style.display = 'none';
 
+      // モーダルを表示
       modalOverlay.classList.add('show');
     });
 
