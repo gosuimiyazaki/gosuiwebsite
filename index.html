@@ -216,15 +216,13 @@
 
         <br><br>
 
-        <!-- 町の写真 -->
+       <!-- 町の写真 -->
         <img src="machi.png" alt="町写真">
         <br><br>
 
-     <!-- ライブ情報枠 -->
-        <div id="live-list">読み込み中...</div>
-
+        <!-- ライブ情報枠 -->
+        <div id="live-list" style="min-height: 50px;">読み込み中...</div>
         <br><br>
-
 
         <p>おまけの絵</p>
 
@@ -249,63 +247,67 @@
         });
 
         // スプレッドシートからのライブ情報読み込み処理
-     const SPREADSHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT96atfvOdnuGXFJcWY5quqfuoo_0DMqOi6rfP_YuKE3l_ogg9VUbfzDi7drIbG-FgtiUMpauMZZrCL/gviz/tq?tqx=out:json';
-        fetch(SPREADSHEET_URL)
-            .then(response => response.text())
-            .then(text => {
-                const jsonText = text.substring(text.indexOf('{'), text.lastIndexOf('}') + 1);
-                const data = JSON.parse(jsonText);
-                
-                const rows = data.table.rows;
-                const container = document.getElementById('live-list');
+        const SPREADSHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT96atfvOdnuGXFJcWY5quqfuoo_0DMqOi6rfP_YuKE3l_ogg9VUbfzDi7drIbG-FgtiUMpauMZZrCL/gviz/tq?tqx=out:json';
 
-                if (!rows || rows.length <= 1) {
-                    container.innerHTML = '<p>現在予定されているライブはありません。</p>';
-                    return;
-                }
+        window.addEventListener('DOMContentLoaded', () => {
+            fetch(SPREADSHEET_URL)
+                .then(response => response.text())
+                .then(text => {
+                    const jsonText = text.substring(text.indexOf('{'), text.lastIndexOf('}') + 1);
+                    const data = JSON.parse(jsonText);
+                    
+                    const rows = data.table.rows;
+                    const container = document.getElementById('live-list');
 
-                let html = '';
-                // 1行目はヘッダーなので slice(1) で除外
-                rows.slice(1).forEach(row => {
-                    const cells = row.c;
-                    const date  = cells[0] ? cells[0].v : '';
-                    const title = cells[1] ? cells[1].v : '';
-                    const place = cells[2] ? cells[2].v : '';
-                    const time  = cells[3] ? cells[3].v : '';
-                    const image = cells[4] ? cells[4].v : '';
-                    const ticket= cells[5] ? cells[5].v : '';
-
-                    if (!date && !title) return;
-
-                    let mediaHtml = '';
-                    if (image) {
-                        if (image.includes('instagram.com')) {
-                            mediaHtml = `<div class="insta-container"><iframe src="${image}/embed" width="100%" height="480" frameborder="0" scrolling="no" allowtransparency="true"></iframe></div>`;
-                        } else {
-                            mediaHtml = `<img src="${image}" alt="${title}">`;
-                        }
+                    if (!rows || rows.length <= 1) {
+                        container.innerHTML = '<p>現在予定されているライブはありません。</p>';
+                        return;
                     }
 
-                    html += `
-                        <div class="live-card">
-                            <div class="live-info">
-                                <div class="live-date">${date}</div>
-                                <div class="live-title">${title}</div>
-                                ${place ? `<div class="live-detail">場所: ${place}</div>` : ''}
-                                ${time ? `<div class="live-detail">時間: ${time}</div>` : ''}
-                                ${ticket ? `<a href="${ticket}" target="_blank" rel="noopener noreferrer" class="ticket-btn">チケット予約・詳細</a>` : ''}
-                                ${mediaHtml}
-                            </div>
-                        </div>
-                    `;
-                });
+                    let html = '';
+                    rows.slice(1).forEach(row => {
+                        const cells = row.c;
+                        if (!cells) return;
 
-                container.innerHTML = html;
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                document.getElementById('live-list').innerHTML = '<p>ライブ情報の読み込みに失敗しました。</p>';
-            });
+                        const date  = cells[0] && cells[0].v ? cells[0].v : '';
+                        const title = cells[1] && cells[1].v ? cells[1].v : '';
+                        const place = cells[2] && cells[2].v ? cells[2].v : '';
+                        const time  = cells[3] && cells[3].v ? cells[3].v : '';
+                        const image = cells[4] && cells[4].v ? cells[4].v : '';
+                        const ticket= cells[5] && cells[5].v ? cells[5].v : '';
+
+                        if (!date && !title) return;
+
+                        let mediaHtml = '';
+                        if (image) {
+                            if (image.includes('instagram.com')) {
+                                mediaHtml = `<div class="insta-container"><iframe src="${image}/embed" width="100%" height="480" frameborder="0" scrolling="no" allowtransparency="true"></iframe></div>`;
+                            } else {
+                                mediaHtml = `<img src="${image}" alt="${title}">`;
+                            }
+                        }
+
+                        html += `
+                            <div class="live-card">
+                                <div class="live-info">
+                                    <div class="live-date">${date}</div>
+                                    <div class="live-title">${title}</div>
+                                    ${place ? `<div class="live-detail">場所: ${place}</div>` : ''}
+                                    ${time ? `<div class="live-detail">時間: ${time}</div>` : ''}
+                                    ${ticket ? `<a href="${ticket}" target="_blank" rel="noopener noreferrer" class="ticket-btn">チケット予約・詳細</a>` : ''}
+                                    ${mediaHtml}
+                                </div>
+                            </div>
+                        `;
+                    });
+
+                    container.innerHTML = html || '<p>現在予定されているライブはありません。</p>';
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    document.getElementById('live-list').innerHTML = '<p>ライブ情報の読み込みに失敗しました。</p>';
+                });
+        });
     </script>
 </body>
 </html>
