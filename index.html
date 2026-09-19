@@ -44,7 +44,7 @@
         /* --- ライブ情報用カードのスタイル --- */
         .live-card {
             background-color: #ffffff;
-            border-radius: 12px;
+            border-radius: 0px;
             overflow: hidden;
             margin-bottom: 25px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
@@ -61,13 +61,13 @@
         }
 
         .live-date {
-            font-size: 0.9rem;
+            font-size: 1.2rem;
             color: #74B5EA;
             font-weight: bold;
         }
 
         .live-title {
-            font-size: 1.2rem;
+            font-size: 1.0rem;
             font-weight: bold;
             margin: 5px 0 10px 0;
             color: #333;
@@ -173,13 +173,7 @@
         </p>
     </div>
 
-    <div class="content">
-
-        <!-- ライブ情報一覧がここに自動挿入されます -->
-        <h2>LIVE SCHEDULE</h2>
-        <div id="live-list">読み込み中...</div>
-
-        <br><br>
+   
 
         <!-- アーティスト写真 -->
         <img src="minna.jpg" alt="みんなの写真">
@@ -204,6 +198,14 @@
 
         <p>東京の歌</p>
         <audio controls src="tokyonouta.mp3"></audio>
+
+        <br><br>
+    
+     <div class="content">
+
+        <!-- ライブ情報一覧がここに自動挿入されます -->
+        <h2>ライブの予定　（チケットお問い合わせはinstagramまで）</h2></h2>
+        <div id="live-list">読み込み中...</div>
 
         <br><br>
 
@@ -281,7 +283,7 @@
 
                 let html = '';
                 items.forEach(row => {
-                    const [date, title, place, act, image, ticket] = row;
+                    const [date, title, place, time, image, ticket] = row;
 
                     if (!date && !title) return;
 
@@ -308,8 +310,8 @@
                             <div class="live-info">
                                 <div class="live-date">${date || ''}</div>
                                 <div class="live-title">${title || ''}</div>
-                                ${place ? `<div class="live-detail">📍 会場: ${place}</div>` : ''}
-                                ${act ? `<div class="live-detail">🎸 出演: ${act}</div>` : ''}
+                                ${place ? `<div class="live-detail">場所: ${place}</div>` : ''}
+                                ${time ? `<div class="live-detail">時間: ${time}</div>` : ''}
                                 ${ticket ? `<a href="${ticket}" target="_blank" rel="noopener noreferrer" class="ticket-btn">チケット予約・詳細</a>` : ''}
                                 ${mediaHtml}
                             </div>
