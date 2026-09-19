@@ -249,8 +249,7 @@
         });
 
         // スプレッドシートからのライブ情報読み込み処理
-        const SPREADSHEET_URL = 'https://script.google.com/macros/s/AKfycbz_XXXXXXXXXXXX/exec'; // ご自身のGASエンドポイントURLを指定
-
+        const SPREADSHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT96atfvOdnuGXFJcWY5quqfuoo_0DMqOi6rfP_YuKE3l_ogg9VUbfzDi7drIbG-FgtiUMpauMZZrCL/gviz/tq?tqx=out:json';
         fetch(SPREADSHEET_URL)
             .then(response => response.json())
             .then(data => {
