@@ -64,6 +64,7 @@
         .live-date,
         .live-detail {
             font-size: 0.95rem;
+             font-weight: bold;
             color: #333;
             margin-bottom: 4px;
         }
@@ -435,24 +436,30 @@ fetch(SPREADSHEET_URL)
     }
   `;
 
-  liveList.appendChild(live);
+   liveList.appendChild(live);
 });
 
-  // Instagramの埋め込みを読み込む
-  if (window.instgrm) {
-    window.instgrm.Embeds.process();
-  }
-
 })
-
 .catch(error => {
   console.error('ライブ情報の読み込みに失敗:', error);
 
   liveList.innerHTML =
     '<p>ライブ情報を読み込めませんでした。</p>';
 });
+
+// Instagram埋め込み用スクリプトを読み込む
+const instagramScript = document.createElement('script');
+instagramScript.src = 'https://www.instagram.com/embed.js';
+instagramScript.async = true;
+
+instagramScript.onload = () => {
+  if (window.instgrm) {
+    window.instgrm.Embeds.process();
+  }
+};
+
+document.body.appendChild(instagramScript);
+
 </script>
-<script async src="https://www.instagram.com/embed.js"></script>
 </body>
 </html>
-```
