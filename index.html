@@ -388,7 +388,7 @@ fetch(SPREADSHEET_URL)
       return;
     }
 
-    dataRows.forEach(row => {
+ dataRows.forEach(row => {
   const [
     date,
     title,
@@ -409,13 +409,20 @@ fetch(SPREADSHEET_URL)
     <div class="live-title">${title || ''}</div>
 
     <div class="live-detail">
-  ${time ? `時間：${time}<br>` : ''}
-  ${place ? `会場：${place}` : ''}
-</div>
+      ${time ? `時間：${time}<br>` : ''}
+      ${place ? `会場：${place}` : ''}
+    </div>
 
     ${
       image
-        ? `<img src="${image}" alt="${title || 'ライブ'}">`
+        ? `
+          <blockquote
+            class="instagram-media"
+            data-instgrm-permalink="${image}"
+            data-instgrm-version="14"
+            style="width:100%; margin:10px 0;">
+          </blockquote>
+        `
         : ''
     }
 
@@ -430,7 +437,10 @@ fetch(SPREADSHEET_URL)
 
   liveList.appendChild(live);
 });
-  })
+
+if (window.instgrm) {
+  window.instgrm.Embeds.process();
+}
   .catch(error => {
     console.error('ライブ情報の読み込みに失敗:', error);
 
@@ -438,7 +448,7 @@ fetch(SPREADSHEET_URL)
       '<p>ライブ情報を読み込めませんでした。</p>';
   });
 </script>
-
+<script async src="https://www.instagram.com/embed.js"></script>
 </body>
 </html>
 ```
