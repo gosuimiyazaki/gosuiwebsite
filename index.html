@@ -404,39 +404,15 @@ fetch(SPREADSHEET_URL)
   const live = document.createElement('div');
   live.className = 'live-card';
 
-  live.innerHTML = `
-    <div class="live-date">${date || ''}</div>
-
-    <div class="live-title">${title || ''}</div>
-
-    <div class="live-detail">
-      ${time ? `時間：${time}<br>` : ''}
-      ${place ? `会場：${place}` : ''}
-    </div>
-
-    ${
-      image
-        ? `
-          <blockquote
-            class="instagram-media"
-            data-instgrm-permalink="${image}"
-            data-instgrm-version="14"
-            style="width:100%; margin:10px 0;">
-          </blockquote>
-        `
-        : ''
-    }
-
-    ${
-      ticket
-        ? `<a class="ticket-btn" href="${ticket}" target="_blank" rel="noopener">
-            チケット・詳細
-          </a>`
-        : ''
-    }
-  `;
-
-  liveList.appendChild(live);
+ live.innerHTML = `
+                <div class="live-date">${date || ''}</div>
+                <div class="live-title">${title || ''}</div>
+                ${time ? `<div class="live-detail">時間：${time}</div>` : ''}
+                ${place ? `<div class="live-detail">会場：${place}</div>` : ''}
+                ${image ? `<blockquote class="instagram-media" data-instgrm-permalink="${image}" data-instgrm-version="14" style="width:100%; max-width:260px; margin:10px auto;"></blockquote>` : ''}
+                ${ticket ? `<a class="ticket-btn" href="${ticket}" target="_blank" rel="noopener">チケット・詳細</a>` : ''}
+            `;
+            liveList.appendChild(live);
 });
 
   // Instagramの埋め込みを読み込む
