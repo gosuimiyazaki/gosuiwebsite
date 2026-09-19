@@ -409,9 +409,9 @@ fetch(SPREADSHEET_URL)
     <div class="live-title">${title || ''}</div>
 
     <div class="live-detail">
-      ${place || ''}
-      ${time ? `<br>${time}` : ''}
-    </div>
+  ${time ? `時間：${time}<br>` : ''}
+  ${place ? `会場：${place}` : ''}
+</div>
 
     ${
       image
