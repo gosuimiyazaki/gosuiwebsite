@@ -389,48 +389,47 @@ fetch(SPREADSHEET_URL)
     }
 
     dataRows.forEach(row => {
-      const [
-        date,
-        title,
-        place,
-        time,
-        image,
-        ticket
-      ] = row;
+  const [
+    date,
+    title,
+    place,
+    time,
+    image,
+    ticket
+  ] = row;
 
-      // 空行を無視
-      if (!date && !title && !place) return;
+  if (!date && !title && !place) return;
 
-      const live = document.createElement('div');
-      live.className = 'live-event';
+  const live = document.createElement('div');
+  live.className = 'live-card';
 
-      live.innerHTML = `
-        <div class="live-date">${date || ''}</div>
+  live.innerHTML = `
+    <div class="live-date">${date || ''}</div>
 
-        <h3>${title || ''}</h3>
+    <div class="live-title">${title || ''}</div>
 
-        <p>
-          ${place || ''}
-          ${time ? `<br>${time}` : ''}
-        </p>
+    <div class="live-detail">
+      ${place || ''}
+      ${time ? `<br>${time}` : ''}
+    </div>
 
-        ${
-          image
-            ? `<img src="${image}" alt="${title || 'ライブ'}">`
-            : ''
-        }
+    ${
+      image
+        ? `<img src="${image}" alt="${title || 'ライブ'}">`
+        : ''
+    }
 
-        ${
-          ticket
-            ? `<p><a href="${ticket}" target="_blank" rel="noopener">
-                チケット・詳細
-              </a></p>`
-            : ''
-        }
-      `;
+    ${
+      ticket
+        ? `<a class="ticket-btn" href="${ticket}" target="_blank" rel="noopener">
+            チケット・詳細
+          </a>`
+        : ''
+    }
+  `;
 
-      liveList.appendChild(live);
-    });
+  liveList.appendChild(live);
+});
   })
   .catch(error => {
     console.error('ライブ情報の読み込みに失敗:', error);
